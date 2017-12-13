@@ -1,0 +1,16 @@
+.color-content {
+  height: 100%;
+  width: 100%;
+}
+
+.red {
+  background: #ff0000;
+}
+
+.blue {
+  background: #0000ff;
+}
+
+.yellow {
+  background: yellow;
+}
