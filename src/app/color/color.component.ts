@@ -19,14 +19,19 @@ export class ColorComponent implements OnInit {
   }
 
   isOdd() {
-    return !this.isPrime() && this.count % 2 === 1;
+    const absoluteCount = Math.abs(this.count);
+    return !this.isPrime() && absoluteCount % 2 === 1;
   }
 
   isEven() {
-    return !this.isZero() && this.count % 2 === 0;
+    return !this.isZero() && !this.isPrime() && this.count % 2 === 0;
   }
 
   isPrime() {
+    if (this.isZero() || this.count < 0) {
+      return false;
+    }
+
     for (let i = 2, s = Math.sqrt(this.count); i <= s; i++) {
       if (this.count % i === 0) {
         return false;
