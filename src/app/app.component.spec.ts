@@ -22,7 +22,7 @@ describe('AppComponent', () => {
   it(`should have as title 'app'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
+    expect(app.title).toEqual('functional-reactive-app-root');
   }));
 
   it('should render title in a h1 tag', async(() => {
