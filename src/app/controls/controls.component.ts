@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { CountState } from '../state/count';
+import { CountActions } from '../state/count.reducer';
 
 @Component({
   selector: 'app-controls',
@@ -6,14 +10,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./controls.component.css']
 })
 export class ControlsComponent implements OnInit {
-  count: number;
-
-  constructor() { }
+  constructor(private countStore: Store<CountState>) { }
 
   ngOnInit() {
   }
 
   reset() {
-    this.count = 0;
+    this.countStore.dispatch({ type: CountActions.reset });
   }
 }

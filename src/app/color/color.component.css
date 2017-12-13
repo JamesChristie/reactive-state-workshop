@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.black {
+  background: #000000;
+}
+
 .red {
   background: #ff0000;
 }

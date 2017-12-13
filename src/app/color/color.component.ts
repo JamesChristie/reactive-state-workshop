@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+
+import { CountState } from '../state/count';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-color',
@@ -6,38 +10,38 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./color.component.css']
 })
 export class ColorComponent implements OnInit {
-  count: number;
+  countState$: Observable<number>;
 
-  constructor() { }
-
-  ngOnInit() {
-    this.count = 0;
+  constructor(private countStore: Store<CountState>) {
+    this.countState$ = this.countStore.select(state => state.count);
   }
 
-  isZero() {
-    return this.count === 0;
+  ngOnInit() { }
+
+  isZero(count: number) {
+    return count === 0;
   }
 
-  isOdd() {
-    const absoluteCount = Math.abs(this.count);
-    return !this.isPrime() && absoluteCount % 2 === 1;
+  isOdd(count: number) {
+    const absoluteCount = Math.abs(count);
+    return !this.isPrime(count) && absoluteCount % 2 === 1;
   }
 
-  isEven() {
-    return !this.isZero() && !this.isPrime() && this.count % 2 === 0;
+  isEven(count: number) {
+    return !this.isZero(count) && !this.isPrime(count) && count % 2 === 0;
   }
 
-  isPrime() {
-    if (this.isZero() || this.count < 0) {
+  isPrime(count: number) {
+    if (this.isZero(count) || count < 0) {
       return false;
     }
 
-    for (let i = 2, s = Math.sqrt(this.count); i <= s; i++) {
-      if (this.count % i === 0) {
+    for (let i = 2, s = Math.sqrt(count); i <= s; i++) {
+      if (count % i === 0) {
         return false;
       }
     }
 
-    return this.count !== 1;
+    return count !== 1;
   }
 }

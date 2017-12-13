@@ -1,5 +1,6 @@
 <div class='color-content'
-     [class.black]='isZero()'
-     [class.red]='isOdd()'
-     [class.blue]='isEven()'
-     [class.yellow]='isPrime()'></div>
+     *ngIf='countState$ | async; let countState'
+     [class.black]='isZero(countState.count)'
+     [class.red]='isOdd(countState.count)'
+     [class.blue]='isEven(countState.count)'
+     [class.yellow]='isPrime(countState.count)'></div>

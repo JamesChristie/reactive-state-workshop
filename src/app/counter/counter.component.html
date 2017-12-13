@@ -1,10 +1,10 @@
-<div class='counter-content'>
+<div class='counter-content' *ngIf="countState$ | async; let countState;">
   <a class='increment button' (click)="increment()">
     Increment
   </a>
 
   <div class='count-display'>
-    {{count}}
+    Current count: {{countState.count}}
   </div>
 
   <a class='decrement button' (click)="decrement()">
